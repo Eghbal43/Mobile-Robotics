@@ -29,16 +29,7 @@ Obstacle Avoidance: Successfully navigated around single and multiple obstacles 
 Future Work
 Extend to more complex road geometries.
 Integrate additional sensors for enhanced perception and robustness.
-How to Use
-Clone this repository:
-bash
-Copy code
-git clone https://github.com/your-repo-name/Linear-MPC-Autonomous-Driving.git
-Open MATLAB and navigate to the project directory.
-Run the main script to simulate lane keeping and obstacle avoidance scenarios:
-matlab
-Copy code
-run Prepare.m
+
 View results through generated plots and performance metrics.
 Dependencies
 MATLAB with Optimization Toolbox
