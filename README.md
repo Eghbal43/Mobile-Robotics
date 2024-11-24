@@ -32,8 +32,3 @@ The primary goals of the project are:
 ### Future Work
 - Extend to more complex road geometries.
 - Integrate additional sensors for enhanced perception and robustness.
-
-## How to Use
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/your-repo-name/Linear-MPC-Autonomous-Driving.git
