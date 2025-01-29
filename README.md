@@ -1,34 +1,34 @@
-# Mobile-Robotics
-# Linear Model Predictive Control (MPC) for Lane Keeping and Obstacle Avoidance
+ ## Trajectory Tracking with a Differential Robot in ROS
 
-This project implements a **Model Predictive Control (MPC)** framework for autonomous vehicle control, focusing on lane keeping and obstacle avoidance on low curvature roads. The controller was designed and tested using MATLAB, leveraging the state-space representation of vehicle dynamics.
+This project implements a **trajectory tracking controller** for a differential mobile robot using **Robot Operating System (ROS)**. The robot is tasked with following a **lemniscate (figure-eight)** pattern within a simulated environment (Gazebo), and the controller computes the necessary control signals for the robot to stay on track while minimizing tracking errors.
 
 ## Project Overview
 
 The primary goals of the project are:
-- **Lane Keeping**: Maintain the vehicle within lane boundaries while minimizing lateral position errors.
-- **Obstacle Avoidance**: Adjust the vehicle's trajectory to navigate around obstacles without leaving the lane.
+- **Trajectory Tracking**: Ensure the robot follows a specific trajectory (lemniscate) accurately, minimizing tracking errors in position and orientation.
+- **Real-Time Control**: Compute and publish the robot's control signals in real-time using ROS, and display key parameters such as displacement, angular velocity, and tracking errors.
 
 ### Key Features
-1. **Linear State-Space Model**:
-   - Includes lateral velocity, yaw angle, yaw angle error, lateral position error, and steering angle.
-   - Discretized for digital control implementation.
 
-2. **Predictive Control**:
-   - Optimizes future control actions over a prediction horizon.
-   - Uses a quadratic cost function to minimize tracking errors and control efforts.
+1. **Differential Kinematic Model**:
+   - The controller uses the kinematic model of the differential robot to compute linear and angular velocities required for trajectory tracking.
+   - The model focuses on position and orientation (yaw) control, utilizing **Jacobian** transformations for velocity adjustments.
 
-3. **Constraints Handling**:
-   - Enforces vehicle mechanical limits (steering angle, rate of change, and tire slip).
-   - Maintains lane boundaries and avoids collisions.
+2. **ROS Integration**:
+   - ROS nodes interact with Gazebo to simulate the robot’s environment.
+   - The **/cmd_vel** topic is used to publish control signals (linear and angular velocities), while the **/odom** topic provides feedback for odometry and position updates.
 
-4. **Robustness to Disturbances**:
-   - Handles variations in road curvature, vehicle speed, and road surface conditions.
+3. **Error Feedback**:
+   - Tracking errors (ex, ey) are calculated to monitor deviations from the desired trajectory.
+   - The control system adjusts velocities to minimize these errors and improve trajectory tracking.
+
+4. **Real-Time Visualization**:
+   - Real-time tracking errors and performance can be visualized using **rqt_plot** and **RViz**, offering valuable insights into the controller's effectiveness.
 
 ### Results
-- **Lane Keeping**: Demonstrated effectiveness in maintaining the vehicle's trajectory with minimal lateral position errors, even at higher speeds.
-- **Obstacle Avoidance**: Successfully navigated around single and multiple obstacles while ensuring stability and adherence to lane constraints.
+- **Trajectory Tracking**: The robot successfully tracked the lemniscate trajectory with minimal errors in position and orientation.
+- **Smooth Control**: The velocity profiles (linear and angular) were adjusted smoothly, ensuring stable operation and avoiding abrupt changes in speed or direction.
 
 ### Future Work
-- Extend to more complex road geometries.
-- Integrate additional sensors for enhanced perception and robustness.
+- Extend the controller to handle more complex trajectories and dynamic obstacles.
+- Integrate additional sensors to improve perception and robustness for real-world applications.
